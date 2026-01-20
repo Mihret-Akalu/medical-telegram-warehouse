@@ -1,0 +1,6 @@
+# requirements_task1.txt
+python-dotenv==1.0.0
+pandas==1.5.3  # Very stable with wheels
+numpy==1.24.3  # Stable version
+telethon==1.34.0
+psycopg2-binary==2.9.9
