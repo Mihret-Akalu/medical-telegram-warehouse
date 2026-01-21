@@ -1,28 +1,10 @@
+﻿@'
 medical_warehouse:
   target: dev
   outputs:
     dev:
-      type: postgres
-      host: "{{ env_var('DB_HOST', 'localhost') }}"
-      user: "{{ env_var('DB_USER', 'postgres') }}"
-      pass: "{{ env_var('DB_PASSWORD', 'postgres') }}"
-      port: "{{ env_var('DB_PORT', 5432) | int }}"
-      dbname: "{{ env_var('DB_NAME', 'medical_warehouse') }}"
-      schema: "{{ env_var('DB_SCHEMA', 'analytics') }}"
-      threads: 4
-      keepalives_idle: 0
-      connect_timeout: 10
-      retries: 1
-    
-    prod:
-      type: postgres
-      host: "{{ env_var('PROD_DB_HOST') }}"
-      user: "{{ env_var('PROD_DB_USER') }}"
-      pass: "{{ env_var('PROD_DB_PASSWORD') }}"
-      port: "{{ env_var('PROD_DB_PORT') | int }}"
-      dbname: "{{ env_var('PROD_DB_NAME') }}"
-      schema: analytics
-      threads: 8
-      keepalives_idle: 0
-      connect_timeout: 30
-      retries: 3
+      type: sqlite
+      database: "../data/medical_warehouse.db"
+      schema: main
+      threads: 1
+'@ | Out-File -FilePath "medical_warehouse\profiles.yml" -Encoding UTF8

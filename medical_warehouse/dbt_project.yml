@@ -1,0 +1,41 @@
+@'
+name: 'medical_warehouse'
+version: '1.0.0'
+config-version: 2
+
+profile: 'medical_warehouse'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["data"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  medical_warehouse:
+    # Staging models - clean and prepare raw data
+    staging:
+      +materialized: table
+      +tags: ['staging']
+    
+    # Mart models - business-ready dimensional models
+    marts:
+      +materialized: table
+      +tags: ['marts']
+
+vars:
+  # Date range for date dimension
+  start_date: '2024-01-01'
+  end_date: '2026-12-31'
+  
+  # Channel classification
+  pharmaceutical_keywords: ['pharma', 'med', 'drug', 'pharmacy', 'pill', 'tablet']
+  cosmetics_keywords: ['cosmetic', 'beauty', 'skin', 'cream', 'lotion', 'makeup']
+  medical_keywords: ['health', 'medical', 'hospital', 'clinic', 'doctor']
+'@ | Out-File -FilePath "medical_warehouse\dbt_project.yml" -Encoding UTF8
