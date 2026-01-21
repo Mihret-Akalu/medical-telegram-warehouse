@@ -1,0 +1,6 @@
+Test Name,Status,Result,Timestamp
+No future dates,PASS,0,2026-01-21T22:56:52.064413
+No negative views,PASS,0,2026-01-21T22:56:52.064413
+All channels have type,PASS,0,2026-01-21T22:56:52.064413
+Foreign key integrity (channels),PASS,0,2026-01-21T22:56:52.064413
+Foreign key integrity (dates),PASS,0,2026-01-21T22:56:52.064413
